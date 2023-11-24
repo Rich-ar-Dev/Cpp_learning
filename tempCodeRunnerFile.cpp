@@ -1,45 +1,42 @@
 #include <iostream>
 
-// Function to calculate and display factorial
-void calculateFactorial(int n)
+// Function to calculate factorial using memorazation
+ unsigned long long calculate_factorial(int n, int result)
 {
-    // Initialize the factorial to 1
-    unsigned long long factorial = 1;
 
-    // Loop to calculate the factorial
-    for (int i = 1; i <= n; ++i)
-    {
-        factorial *= i;
+  // Base case: If n is 0, return results 
+  if (n == 0)
+  {
+    return result;
+  }
+  else
+  {
+    // Recursive case: Calculate factorial in the lop
+    return calculate_factorial(n-1, result*n);
     }
-
-    // Display the calculated factorial
-    std::cout << "Factorial of " << n << " = " << factorial << std::endl;
-}
+  }
 
 int main()
 {
-    // Declare a variable to store the input number
-    int n;
+  // Declare a variable to store the input number
+  int n;
 
-    // Prompt the user to enter a non-negative integer
-    std::cout << "Enter a non-negative integer to calculate its factorial: ";
+  // Prompt the user to enter a non-negative integer
+  std::cout << "Enter a non-negative integer to calculate its factorial: ";
+  std::cin >> n;
 
-    // Input the value of n
-    std::cin >> n;
+  // Check if the input is valid (non-negative)
+  if (n < 0)
+  {
+    // Display an error message for invalid input
+    std::cout << "Invalid input. Please enter a non-negative integer." << std::endl;
+    // Exit with an error code
+    return 1;
+  }
 
-    // Check if the input is valid
-    if (n < 0)
-    {
-        // Display an error message for invalid input
-        std::cout << "Invalid input. Please enter a non-negative integer." << std::endl;
-        // Exit with an error code
-        return 1;
-    }
+  // Display the calculated factorial
+  std::cout << "Factorial of " << n << " = " << calculate_factorial(n, 1) << std::endl;
 
-    std::cout << std::endl;
-    // Calculate and display the factorial
-    calculateFactorial(n);
-
-    // Exit successfully
-    return 0;
+  // Exit successfully
+  return 0;
 }

@@ -1,23 +1,20 @@
 #include <iostream>
-#include <vector>
 
 // Function to calculate factorial using memorazation
-unsigned long long calculateFactorial(int n)
+unsigned long long calculate(int n)
 {
-  std::vector<unsigned long long> factorial(n, 1);
   // Base case: If n is 0, return 1
   if (n == 0)
   {
     return 1;
   }
-  else
-  {
-    // Recursive case: Calculate factorial in the lop
-    for ( int i= 1; i<=n; ++i) {
-      factorial[i] = factorial[i] * i;
-    }
-    return factorial[n];
+  int factorial[n] = {1, 0};
+  // Recursive case: Calculate factorial in the lop
+  for ( int i= 1; i<=n; ++i) {
+    factorial[i] = factorial[i - 1] * i;
   }
+  return factorial[n];
+  
 }
 int main()
 {
@@ -38,7 +35,7 @@ int main()
   }
 
   // Calculate factorial using recursion
-  unsigned long long result = calculateFactorial(n);
+  unsigned long long result = calculate(n);
 
   // Display the calculated factorial
   std::cout << "Factorial of " << n << " = " << result << std::endl;
